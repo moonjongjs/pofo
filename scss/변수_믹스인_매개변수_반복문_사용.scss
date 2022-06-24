@@ -1,0 +1,128 @@
+
+    // SASS 함수 MIXIN 믹스인 
+            
+    #section4.sec4Ani {
+      overflow: hidden;
+    }
+    #section4.sec4Ani .container .gap .wrap #nav {
+      animation: sec4Ani1 1s forwards ease-in-out;
+    }
+    // #section4.sec4Ani .container .gap .wrap .content ul.galley-wrap li.gallery-list:nth-child(1) {animation: sec4Ani2 1.3s forwards ease-in-out;}
+    // #section4.sec4Ani .container .gap .wrap .content ul.galley-wrap li.gallery-list:nth-child(2) {animation: sec4Ani3 1.6s forwards ease-in-out;}
+    // #section4.sec4Ani .container .gap .wrap .content ul.galley-wrap li.gallery-list:nth-child(3) {animation: sec4Ani4 1.9s forwards ease-in-out;}
+    // #section4.sec4Ani .container .gap .wrap .content ul.galley-wrap li.gallery-list:nth-child(4) {animation: sec4Ani5 2.2s forwards ease-in-out;}
+    // #section4.sec4Ani .container .gap .wrap .content ul.galley-wrap li.gallery-list:nth-child(5) {animation: sec4Ani6 2.5s forwards ease-in-out;}
+    // #section4.sec4Ani .container .gap .wrap .content ul.galley-wrap li.gallery-list:nth-child(6) {animation: sec4Ani7 2.8s forwards ease-in-out;}
+    // #section4.sec4Ani .container .gap .wrap .content ul.galley-wrap li.gallery-list:nth-child(7) {animation: sec4Ani8 3.1s forwards ease-in-out;}
+    // #section4.sec4Ani .container .gap .wrap .content ul.galley-wrap li.gallery-list:nth-child(8) {animation: sec4Ani9 3.4s forwards ease-in-out;}
+    
+    //믹스인 
+    $val: 1;
+    @mixin sectionAniCreate() {
+      @for $i from 1 to 9 { // < 9        
+        $val : $val + .3; 
+        #section4.sec4Ani .container .gap .wrap .content ul.galley-wrap li.gallery-list:nth-child(#{$i}) {animation: sec4Ani#{$i+1} #{$val}s forwards ease-in-out;}
+      }
+    }
+    
+    @include sectionAniCreate();
+
+
+    // 반복적인 코딩
+    // CSS 스크립트 >> SASS 스크립트
+    // $변수 
+    // @함수 >> 믹스인 @mixin(){}
+    // 매개변수 2개 필요 
+    // 1. 믹스인(함수) 설정 매개변수 사용 가능
+    @mixin sectionAni ($num, $value){
+      @keyframes sec4Ani#{$num} {
+          0% {transform:translateY($value);opacity:0;}
+        100% {transform:translateY(0);opacity:1;}
+      }
+    } 
+
+    // 2. 함수 호출
+    // 함수(믹스인) 호출 실행
+    // $value1:  500px;
+    // $value2: 1000px;
+    // @include sectionAni (1, $value1);
+    // @include sectionAni (2, $value2);
+    // @include sectionAni (3, $value2);
+    // @include sectionAni (4, $value2);
+    // @include sectionAni (5, $value2);
+    // @include sectionAni (6, $value2);
+    // @include sectionAni (7, $value2);
+    // @include sectionAni (8, $value2);
+    // @include sectionAni (9, $value2);
+
+
+    // 3. 반복문 사용
+    // $value1:  500px;
+    // $value2: 1000px;
+    // @include sectionAni (1, $value1);
+
+    // // @반복문 2~9 8회 반복
+    // @for $i from 2 to 10 { //10 미만
+    //   @include sectionAni ($i, $value2);
+    // }
+
+    // 4. 조건문 @if(){} @else if(){} @else if(){} @else(){}
+    $value1:  500px;
+    $value2: 1000px;
+    @for $i from 1 to 10 { //step 값은 자동 증가
+      @if($i==1){ //i 1인경우만
+          @include sectionAni($i, $value1);
+      }
+      @else{ // 2 ~ 9
+          @include sectionAni($i, $value2);
+      }
+    }
+
+
+    // @include sectionAni (2, $value2);
+    // @include sectionAni (3, $value2);
+    // @include sectionAni (4, $value2);
+    // @include sectionAni (5, $value2);
+    // @include sectionAni (6, $value2);
+    // @include sectionAni (7, $value2);
+    // @include sectionAni (8, $value2);
+    // @include sectionAni (9, $value2);
+
+
+    // @keyframes sec4Ani1 {
+    //     0% {transform:translateY(500px);opacity:0;}
+    //   100% {transform:translateY(0);opacity:1;}
+    // }
+    // @keyframes sec4Ani2 {
+    //     0% {transform:translateY(1000px);opacity:0;}
+    //   100% {transform:translateY(0);opacity:1;}
+    // }
+    // @keyframes sec4Ani3 {
+    //     0% {transform:translateY(1000px);opacity:0;}
+    //   100% {transform:translateY(0);opacity:1;}
+    // }
+    // @keyframes sec4Ani4 {
+    //     0% {transform:translateY(1000px);opacity:0;}
+    //   100% {transform:translateY(0);opacity:1;}
+    // }
+    // @keyframes sec4Ani5 {
+    //     0% {transform:translateY(1000px);opacity:0;}
+    //   100% {transform:translateY(0);opacity:1;}
+    // }
+    // @keyframes sec4Ani6 {
+    //     0% {transform:translateY(1000px);opacity:0;}
+    //   100% {transform:translateY(0);opacity:1;}
+    // }
+    // @keyframes sec4Ani7 {
+    //     0% {transform:translateY(1000px);opacity:0;}
+    //   100% {transform:translateY(0);opacity:1;}
+    // }
+    // @keyframes sec4Ani8 {
+    //     0% {transform:translateY(1000px);opacity:0;}
+    //   100% {transform:translateY(0);opacity:1;}
+    // }
+    // @keyframes sec4Ani9 {
+    //     0% {transform:translateY(1000px);opacity:0;}
+    //   100% {transform:translateY(0);opacity:1;}
+    // }
+

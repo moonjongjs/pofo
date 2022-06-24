@@ -1,0 +1,15 @@
+"liveSassCompile.settings.formats": [
+  {
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": "~/../css"
+  }
+],
+"liveSassCompile.settings.generateMap": false,
+"[css]": {
+  "editor.defaultFormatter": "sasa.vscode-sass-format"
+},
+"[scss]": {
+  "editor.defaultFormatter": "sasa.vscode-sass-format"
+},
+"editor.mouseWheelZoom": true
